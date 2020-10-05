@@ -1,0 +1,10 @@
+[Unit]
+Description=Script
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/maven-rpm-test.sh
+ExecReload=/bin/bash /opt/maven-rpm-test.sh
+
+[Install]
+WantedBy=multi-user.target

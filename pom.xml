@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>maven-rpm-test</groupId>
+ <artifactId>maven-rpm-test</artifactId>
+ <version>1.0.0</version>
+
+ <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ </properties>
+ 
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>rpm-maven-plugin</artifactId>
+    <version>2.2.0</version>
+    <executions>
+     <execution>
+      <goals>
+       <goal>rpm</goal>
+      </goals>
+     </execution>
+    </executions>
+
+    <configuration>
+     <copyright>Script</copyright>
+     <group>Development/Tools</group>
+     <release>1</release>     
+     <mappings>
+      <mapping>
+       <directory>/opt</directory>
+       <username>root</username>
+       <groupname>root</groupname>
+       <filemode>755</filemode>
+       <sources>
+        <source>
+         <location>${project.basedir}/maven-rpm-test.sh</location>
+        </source>
+      </sources>
+     </mapping>
+      <mapping>
+       <directory>/usr/lib/systemd/system</directory>
+       <username>root</username>
+       <groupname>root</groupname>
+       <filemode>755</filemode>
+       <sources>
+        <source>
+         <location>${project.basedir}/maven-rpm-test.service</location>
+        </source>
+      </sources>
+     </mapping>
+    </mappings>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+</project>
